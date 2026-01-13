@@ -1,23 +1,55 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= content_for(:title) || "Booking App" %></title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>Potepan Share</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= yield :head %>
-
-    <link rel="manifest" href="/manifest.json">
-    <link rel="icon" href="/icon.png" type="image/png">
-    <link rel="icon" href="/icon.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="/icon.png">
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
+    <header class="site-header">
+  <div class="header-inner">
+    <%= link_to root_path, class: "logo" do %>
+      Potepan Share
+    <% end %>
+
+    <div class="header-actions">
+      <% if logged_in? %>
+        <details>
+          <summary>
+            <div class="user-avatar-header">
+              <% if current_user.avatar.attached? %>
+                <%= image_tag current_user.avatar, class: "avatar-img-header" %>
+              <% else %>
+                <div class="avatar-placeholder-header">
+                  <span class="avatar-icon-header">⭐</span>
+                </div>
+              <% end %>
+            </div>
+            <span class="user-name-header"><%= current_user.name %></span>
+            <span class="dropdown-arrow">▼</span>
+          </summary>
+          <ul>
+            <li><%= link_to "施設の新規登録", new_room_path %></li>
+            <li><%= link_to "予約済み一覧", reservations_path %></li>
+            <li><%= link_to "登録済み一覧", my_rooms_rooms_path %></li>
+            <li><%= link_to "アカウント設定", settings_path %></li>
+            <li>
+              <%= button_to "ログアウト", session_path, method: :delete %>
+            </li>
+          </ul>
+        </details>
+      <% else %>
+        <%= link_to "ログイン", new_session_path, class: "header-link" %>
+        <%= link_to "新規登録", new_user_path, class: "btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</header>
+
     <%= yield %>
   </body>
 </html>

@@ -1,0 +1,72 @@
+<div class="form-container">
+  <h1 class="form-title">新規登録</h1>
+
+  <%= form_with model: @room, local: true, class: "room-form" do |f| %>
+    <% if @room.errors.any? %>
+      <div class="error-messages">
+        <h3><%= @room.errors.count %>件のエラーがあります</h3>
+        <ul>
+          <% @room.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <div class="form-label-wrapper">
+        <%= f.label :name, "施設名", class: "form-label" %>
+        <span class="required">*</span>
+      </div>
+      <%= f.text_field :name, 
+            class: "form-input-wide", 
+            placeholder: "ルーム名を入力" %>
+    </div>
+
+    <div class="form-group">
+      <div class="form-label-wrapper">
+        <%= f.label :description, "施設詳細", class: "form-label" %>
+        <span class="required">*</span>
+      </div>
+      <%= f.text_area :description, 
+            class: "form-textarea-wide", 
+            placeholder: "施設詳細を入力",
+            rows: 6 %>
+    </div>
+
+    <div class="form-group">
+      <div class="form-label-wrapper">
+        <%= f.label :price, "料金", class: "form-label" %>
+        <span class="required">*</span>
+      </div>
+      <%= f.number_field :price, 
+            class: "form-input-wide", 
+            placeholder: "一日あたりの料金を入力" %>
+    </div>
+
+    <div class="form-group">
+      <div class="form-label-wrapper">
+        <%= f.label :address, "住所", class: "form-label" %>
+        <span class="required">*</span>
+      </div>
+      <%= f.text_field :address, 
+            class: "form-input-wide", 
+            placeholder: "住所を入力" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :image, "施設画像", class: "form-label" %>
+      <label class="file-upload-button">
+        画像アップロード
+        <%= f.file_field :image, 
+              class: "form-file",
+              accept: "image/*" %>
+      </label>
+    </div>
+
+    <div class="form-actions">
+      <%= f.submit "保存", class: "btn-submit" %>
+      <%= link_to "キャンセル", root_path, class: "btn-cancel" %>
+    </div>
+  <% end %>
+</div>

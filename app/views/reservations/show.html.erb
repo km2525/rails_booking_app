@@ -1,0 +1,43 @@
+<h1>予約詳細</h1>
+
+<hr>
+
+<h2><%= @reservation.room.name %></h2>
+
+<p><strong>住所</strong></p>
+<p><%= @reservation.room.address %></p>
+
+<p><strong>チェックイン</strong></p>
+<p><%= @reservation.check_in %></p>
+
+<p><strong>チェックアウト</strong></p>
+<p><%= @reservation.check_out %></p>
+
+<p><strong>宿泊日数</strong></p>
+<p>
+  <%= (@reservation.check_out - @reservation.check_in).to_i %> 泊
+</p>
+
+<p><strong>料金</strong></p>
+<p>
+  ¥<%= number_with_delimiter(@reservation.room.price) %> / 日
+</p>
+
+<p><strong>合計金額</strong></p>
+<p>
+  ¥<%= number_with_delimiter(
+    @reservation.room.price *
+    (@reservation.check_out - @reservation.check_in).to_i
+  ) %>
+</p>
+
+<hr>
+
+<%= link_to "一覧へ戻る", reservations_path %>
+|
+<%= link_to "キャンセル",
+            reservation_path(@reservation),
+            data: {
+              turbo_method: :delete,
+              turbo_confirm: "この予約をキャンセルしますか？"
+            } %>

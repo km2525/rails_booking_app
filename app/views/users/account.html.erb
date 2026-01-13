@@ -1,0 +1,60 @@
+<div class="settings-container">
+  <aside class="settings-sidebar">
+    <h2 class="settings-title">設定</h2>
+    <nav class="settings-nav">
+      <%= link_to "アカウント", account_settings_path, class: "nav-item active" %>
+      <%= link_to "プロフィール", profile_settings_path, class: "nav-item" %>
+    </nav>
+  </aside>
+
+  <main class="settings-main">
+    <h1 class="settings-page-title-only">アカウント</h1>
+
+    <!-- 編集フォーム（常に表示） -->
+    <div class="settings-form-vertical">
+      <%= form_with model: @user, url: account_settings_path, method: :patch, local: true do |f| %>
+        <% if @user.errors.any? %>
+          <div class="error-messages">
+            <h3><%= @user.errors.count %>件のエラーがあります</h3>
+            <ul>
+              <% @user.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        <div class="form-row-vertical">
+          <%= f.label :email, "メールアドレス", class: "row-label" %>
+          <%= f.email_field :email, class: "row-input", placeholder: "メールアドレスを入力" %>
+        </div>
+
+        <div class="form-row-vertical">
+          <div class="label-with-note">
+            <%= f.label :password, "変更後パスワード", class: "row-label" %>
+            <span class="label-note">※変更する場合のみ</span>
+          </div>
+          <%= f.password_field :password, class: "row-input", placeholder: "変更後パスワードを入力" %>
+        </div>
+
+        <div class="form-row-vertical">
+          <div class="label-with-note">
+            <%= f.label :password_confirmation, "確認用パスワード", class: "row-label" %>
+            <span class="label-note">※変更する場合のみ</span>
+          </div>
+          <%= f.password_field :password_confirmation, class: "row-input", placeholder: "変更後パスワードを入力" %>
+        </div>
+
+        <div class="form-row-vertical">
+          <%= f.label :current_password, "現在のパスワード", class: "row-label" %>
+          <%= f.password_field :current_password, class: "row-input", placeholder: "現在のパスワードを入力" %>
+        </div>
+
+        <div class="form-actions-right">
+          <%= link_to "キャンセル", account_settings_path, class: "btn-cancel-white" %>
+          <%= f.submit "保存", class: "btn-save-orange" %>
+        </div>
+      <% end %>
+    </div>
+  </main>
+</div>

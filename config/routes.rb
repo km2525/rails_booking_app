@@ -1,14 +1,34 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  root "home#index"
+  
+  resources :users, only: [:new, :create, :edit, :update]
 
-  # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
-  # Can be used by load balancers and uptime monitors to verify that the app is live.
-  get "up" => "rails/health#show", as: :rails_health_check
+  resource :session, only: [:new, :create, :destroy]
 
-  # Render dynamic PWA files from app/views/pwa/*
-  get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
-  get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
+  resources :rooms, only: [:new, :create, :index, :show, :edit, :update, :destroy] do
+    resources :reservations, only: [:create] do
+      collection do
+        get :confirm
+      end
+    end
+    collection do
+      get :my_rooms
+    end
+  end
 
-  # Defines the root path route ("/")
-  # root "posts#index"
+  resources :reservations, only: [:index, :show, :destroy] do
+    member do
+      get :rebook  # 再予約ページ
+    end
+  end
+
+  get '/settings', to: 'users#settings', as: :settings
+  get '/settings/account', to: 'users#account', as: :account_settings
+  patch '/settings/account', to: 'users#update_account'
+  get '/settings/profile', to: 'users#profile', as: :profile_settings
+  patch '/settings/profile', to: 'users#update_profile'
+
+  get    "/login",  to: "sessions#new",     as: :login
+  post   "/login",  to: "sessions#create"
+  delete "/logout", to: "sessions#destroy", as: :logout
 end

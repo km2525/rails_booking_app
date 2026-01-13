@@ -1,0 +1,104 @@
+<div class="room-detail-page-v2">
+  <!-- 検索バー -->
+  <div class="search-bar-top">
+    <%= form_with url: rooms_path, method: :get, local: true, class: "search-form-top" do %>
+      <div class="search-inputs-top">
+        <div class="search-input-wrapper-top">
+          <span class="search-icon-top">📍</span>
+          <%= text_field_tag :area, params[:area], 
+                class: "search-input-top", 
+                placeholder: "エリア名を入力" %>
+        </div>
+        
+        <div class="search-input-wrapper-top">
+          <span class="search-icon-top">🔍</span>
+          <%= text_field_tag :keyword, params[:keyword], 
+                class: "search-input-top", 
+                placeholder: "キーワード名を入力" %>
+        </div>
+        
+        <%= submit_tag "検索", class: "btn-search-top" %>
+      </div>
+    <% end %>
+  </div>
+
+  <!-- 戻るボタン -->
+  <div class="back-button-container">
+    <%= link_to rooms_path, class: "back-link" do %>
+      <span class="back-arrow">←</span> 戻る
+    <% end %>
+  </div>
+
+  <!-- メインコンテンツ -->
+  <div class="room-show-container">
+    <div class="room-show-layout">
+      <!-- 左側：画像 -->
+      <div class="room-image-section">
+        <% if @room.image.attached? %>
+          <%= image_tag @room.image, class: "room-main-image" %>
+        <% else %>
+          <div class="room-image-placeholder-show">No Image</div>
+        <% end %>
+      </div>
+
+      <!-- 右側：情報と予約フォーム -->
+      <div class="room-info-section">
+        <div class="room-header-simple">
+          <h1 class="room-title-simple"><%= @room.name %></h1>
+          <div class="room-price-display">¥<%= number_with_delimiter(@room.price) %>~</div>
+        </div>
+
+        <p class="room-address-simple">
+          <%= @room.address %>
+        </p>
+
+        <div class="room-rating-simple">
+          ⭐⭐⭐⭐⭐
+        </div>
+
+        <p class="room-description-simple">
+          <%= @room.description %>
+        </p>
+
+        <!-- 予約フォーム -->
+<%= form_with url: confirm_room_reservations_path(@room), method: :get, local: true, class: "booking-form-simple" do |f| %>
+  <div class="booking-inputs-row">
+    <div class="booking-input-group">
+      <%= label_tag :check_in, "チェックイン", class: "booking-label" %>
+      <%= date_field_tag :check_in, params[:check_in],
+            class: "booking-input",
+            min: Date.today,
+            required: true %>
+    </div>
+
+    <div class="booking-input-group">
+      <%= label_tag :check_out, "チェックアウト", class: "booking-label" %>
+      <%= date_field_tag :check_out, params[:check_out],
+            class: "booking-input",
+            min: Date.today + 1,
+            required: true %>
+    </div>
+
+    <div class="booking-input-group">
+      <%= label_tag :guests, "人数", class: "booking-label" %>
+      <div class="guest-input-wrapper">
+        <%= number_field_tag :guests, params[:guests] || 1,
+              class: "booking-input guest-number",
+              min: 1,
+              max: 10,
+              required: true %>
+        <span class="guest-unit">人</span>
+      </div>
+    </div>
+  </div>
+
+  <% if logged_in? %>
+    <%= submit_tag "予約する", class: "btn-reserve" %>
+  <% else %>
+    <%= link_to "ログインして予約", login_path, class: "btn-reserve" %>
+  <% end %>
+<% end %>
+      </div>
+    </div>
+  </div>
+</div>

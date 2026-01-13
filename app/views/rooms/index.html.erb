@@ -1,0 +1,78 @@
+<h1 class="page-title">施設一覧</h1>
+
+<div class="search-page">
+  <!-- 検索フォーム -->
+  <div class="search-form-container">
+    <%= form_with url: rooms_path, method: :get, local: true, class: "search-form-advanced" do %>
+      <div class="search-inputs">
+        <div class="search-input-wrapper">
+          <span class="search-icon">📍</span>
+          <%= text_field_tag :area, params[:area], 
+                class: "search-input", 
+                placeholder: "エリア名を入力" %>
+        </div>
+        
+        <div class="search-input-wrapper">
+          <span class="search-icon">🔍</span>
+          <%= text_field_tag :keyword, params[:keyword], 
+                class: "search-input", 
+                placeholder: "キーワード名を入力" %>
+        </div>
+        
+        <%= submit_tag "検索", class: "btn-search" %>
+      </div>
+    <% end %>
+  </div>
+
+  <!-- 検索結果 -->
+  <div class="search-results-page">
+    <div class="container">
+      <% if params[:area].present? || params[:keyword].present? %>
+        <p class="search-count"><%= @rooms.count %>件が見つかりました。</p>
+      <% end %>
+
+      <% if @rooms.any? %>
+        <div class="rooms-grid-large">
+          <% @rooms.each do |room| %>
+            <div class="room-card-large">
+              <%= link_to room_path(room), class: "room-card-link" do %>
+                <div class="room-image-wrapper">
+                  <% if room.image.attached? %>
+                    <%= image_tag room.image, class: "room-image-large" %>
+                  <% else %>
+                    <div class="room-image-placeholder-large">No Image</div>
+                  <% end %>
+                </div>
+
+                <div class="room-info">
+                  <h3 class="room-title"><%= room.name %></h3>
+                  <p class="room-address-small"><%= room.address %></p>
+                  
+                  <div class="room-rating">
+                    <span class="stars">⭐⭐⭐⭐⭐</span>
+                  </div>
+
+                  <p class="room-description-preview">
+                    <%= truncate(room.description, length: 80) %>
+                  </p>
+
+                  <div class="room-footer">
+                    <div class="room-price-large">
+                      ¥<%= number_with_delimiter(room.price) %>~
+                    </div>
+                    <div class="btn-detail">詳細はこちら</div>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      <% else %>
+        <div class="no-results">
+          <p>検索条件に一致する物件が見つかりませんでした。</p>
+          <%= link_to "トップページに戻る", root_path, class: "btn-primary" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,25 @@
+<section class="recommended">
+  <h2>おすすめのエリア</h2>
+
+  <div class="area-grid">
+    <%= link_to rooms_path(q: "東京"), class: "area-card tokyo" do %>
+      <span class="area-jp">東京</span>
+      <span class="area-en">Tokyo</span>
+    <% end %>
+
+    <%= link_to rooms_path(q: "大阪"), class: "area-card osaka" do %>
+      <span class="area-jp">大阪</span>
+      <span class="area-en">Osaka</span>
+    <% end %>
+
+    <%= link_to rooms_path(q: "京都"), class: "area-card kyoto" do %>
+      <span class="area-jp">京都</span>
+      <span class="area-en">Kyoto</span>
+    <% end %>
+
+    <%= link_to rooms_path(q: "札幌"), class: "area-card sapporo" do %>
+      <span class="area-jp">札幌</span>
+      <span class="area-en">Sapporo</span>
+    <% end %>
+  </div>
+</section>

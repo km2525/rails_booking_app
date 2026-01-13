@@ -1,0 +1,20 @@
+<div class="hero-v2">
+  <div class="hero-overlay-v2">
+    <h1 class="hero-title-v2">
+      Potepan Shareで<br>
+      まだ体験したことのない<br>
+      旅をしよう
+    </h1>
+
+    <div class="hero-search-v2">
+      <%= form_with url: rooms_path, method: :get, local: true, class: "hero-form" do %>
+        <%= text_field_tag :area, "", 
+              placeholder: "エリア名を入力",
+              class: "hero-input-v2" %>
+        <button type="submit" class="hero-button-v2">検索</button>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<%= render "recommended_areas" %>
