@@ -60,44 +60,88 @@
           <%= @room.description %>
         </p>
 
-        <!-- 予約フォーム -->
-<%= form_with url: confirm_room_reservations_path(@room), method: :get, local: true, class: "booking-form-simple" do |f| %>
-  <div class="booking-inputs-row">
-    <div class="booking-input-group">
-      <%= label_tag :check_in, "チェックイン", class: "booking-label" %>
-      <%= date_field_tag :check_in, params[:check_in],
-            class: "booking-input",
-            min: Date.today,
-            required: true %>
-    </div>
+        <!-- ★★★ ここに料金注釈を追加 ★★★ -->
+        <p class="price-note">※料金は1人1泊あたりの金額です</p>
 
-    <div class="booking-input-group">
-      <%= label_tag :check_out, "チェックアウト", class: "booking-label" %>
-      <%= date_field_tag :check_out, params[:check_out],
-            class: "booking-input",
-            min: Date.today + 1,
-            required: true %>
-    </div>
+       <!-- 予約フォーム -->
+        <%= form_with url: confirm_room_reservations_path(@room), method: :get, local: true, class: "booking-form-simple", id: "booking-form" do |f| %>
+          <div class="booking-inputs-row">
+            <div class="booking-input-group">
+              <%= label_tag :check_in, "チェックイン", class: "booking-label" %>
+              <%= date_field_tag :check_in, params[:check_in],
+                    class: "booking-input",
+                    id: "check-in-date",
+                    min: Date.today,
+                    required: true %>
+            </div>
 
-    <div class="booking-input-group">
-      <%= label_tag :guests, "人数", class: "booking-label" %>
-      <div class="guest-input-wrapper">
-        <%= number_field_tag :guests, params[:guests] || 1,
-              class: "booking-input guest-number",
-              min: 1,
-              max: 10,
-              required: true %>
-        <span class="guest-unit">人</span>
-      </div>
-    </div>
-  </div>
+            <div class="booking-input-group">
+              <%= label_tag :check_out, "チェックアウト", class: "booking-label" %>
+              <%= date_field_tag :check_out, params[:check_out],
+                    class: "booking-input",
+                    id: "check-out-date",
+                    min: Date.today + 1,
+                    required: true %>
+            </div>
 
-  <% if logged_in? %>
-    <%= submit_tag "予約する", class: "btn-reserve" %>
-  <% else %>
-    <%= link_to "ログインして予約", login_path, class: "btn-reserve" %>
-  <% end %>
-<% end %>
+            <div class="booking-input-group">
+              <%= label_tag :guests, "人数", class: "booking-label" %>
+              <div class="guest-input-wrapper">
+                <%= number_field_tag :guests, params[:guests] || 1,
+                      class: "booking-input guest-number",
+                      min: 1,
+                      max: 10,
+                      required: true %>
+                <span class="guest-unit">人</span>
+              </div>
+            </div>
+          </div>
+
+          <% if logged_in? %>
+            <%= submit_tag "予約する", class: "btn-reserve" %>
+          <% else %>
+            <%= link_to "ログインして予約", login_path, class: "btn-reserve" %>
+          <% end %>
+        <% end %>
+
+        <script>
+          document.addEventListener('DOMContentLoaded', function() {
+            const checkInInput = document.getElementById('check-in-date');
+            const checkOutInput = document.getElementById('check-out-date');
+            const form = document.getElementById('booking-form');
+
+            // チェックイン日が変更されたら、チェックアウトの最小日付を更新
+            if (checkInInput) {
+              checkInInput.addEventListener('change', function() {
+                const checkInDate = new Date(this.value);
+                const nextDay = new Date(checkInDate);
+                nextDay.setDate(nextDay.getDate() + 1);
+                
+                const minCheckOut = nextDay.toISOString().split('T')[0];
+                checkOutInput.setAttribute('min', minCheckOut);
+                
+                // チェックアウトがチェックインより前なら自動調整
+                if (checkOutInput.value && checkOutInput.value <= this.value) {
+                  checkOutInput.value = minCheckOut;
+                }
+              });
+            }
+
+            // フォーム送信時のバリデーション
+            if (form) {
+              form.addEventListener('submit', function(e) {
+                const checkIn = new Date(checkInInput.value);
+                const checkOut = new Date(checkOutInput.value);
+
+                if (checkOut <= checkIn) {
+                  e.preventDefault();
+                  alert('チェックアウト日はチェックイン日より後の日付を選択してください');
+                  return false;
+                }
+              });
+            }
+          });
+        </script>
       </div>
     </div>
   </div>

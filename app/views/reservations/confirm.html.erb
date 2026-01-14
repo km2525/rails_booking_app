@@ -15,12 +15,19 @@
 
       <div class="confirm-row">
         <div class="confirm-label">日数</div>
-        <div class="confirm-value"><%= @nights %>日</div>
+        <div class="confirm-value"><%= @nights %>泊</div>
       </div>
 
       <div class="confirm-row">
         <div class="confirm-label">人数</div>
         <div class="confirm-value"><%= @guests %>人</div>
+      </div>
+
+      <div class="confirm-row">
+        <div class="confirm-label">料金内訳</div>
+        <div class="confirm-value">
+          ¥<%= number_with_delimiter(@room.price) %> × <%= @nights %>泊 × <%= @guests %>人
+        </div>
       </div>
 
       <div class="confirm-row total">
