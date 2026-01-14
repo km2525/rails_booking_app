@@ -1,15 +1,2747 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+/* ===== Header ===== */
+.site-header {
+  background: linear-gradient(90deg, #1e1e3f, #2b2b5e);
+  padding: 20px 0;
+}
+
+.header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: bold;
+  text-decoration: none;
+  color: white;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.header-link {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.btn-primary {
+  background-color: #ff7a59;
+  color: white;
+  padding: 10px 18px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  border: none;
+}
+
+/* ユーザーメニュー */
+.header-actions details {
+  position: relative;
+}
+
+.header-actions summary {
+  cursor: pointer;
+  list-style: none;
+  color: white;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: background 0.2s;
+}
+
+.header-actions summary:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.header-actions summary::-webkit-details-marker {
+  display: none;
+}
+
+.user-icon {
+  font-size: 20px;
+}
+
+.dropdown-arrow {
+  font-size: 10px;
+  margin-left: 2px;
+}
+
+/* ドロップダウンメニュー */
+.header-actions details ul {
+  position: absolute;
+  top: 45px;
+  right: 0;
+  list-style: none;
+  padding: 8px 0;
+  margin: 0;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  min-width: 180px;
+  z-index: 100;
+}
+
+.header-actions details ul li {
+  padding: 0;
+}
+
+.header-actions details ul li a,
+.header-actions details ul li form button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 10px 16px;
+  text-decoration: none;
+  color: #333;
+  background: none;
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.header-actions details ul li:hover {
+  background-color: #f5f5f5;
+}
+
+/* ===== 共通 ===== */
+.page-title {
+  font-size: 28px;
+  text-align: center;
+  margin: 30px 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ===== ヒーローエリア V2 ===== */
+.hero-v2 {
+  height: 600px;
+  background-image: url("/assets/hero.jpg");
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.hero-overlay-v2 {
+  background: rgba(0, 0, 0, 0.4);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+.hero-title-v2 {
+  font-size: 48px;
+  font-weight: bold;
+  line-height: 1.5;
+  margin-bottom: 50px;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+  letter-spacing: 1px;
+}
+
+.hero-search-v2 {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 30px;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 600px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.hero-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.hero-input-v2 {
+  width: 100%;
+  padding: 16px 20px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  transition: all 0.2s;
+  box-sizing: border-box;
+}
+
+.hero-input-v2:focus {
+  outline: none;
+  border-color: #ff7a59;
+  box-shadow: 0 0 0 3px rgba(255, 122, 89, 0.1);
+}
+
+.hero-input-v2::placeholder {
+  color: #999;
+}
+
+.hero-button-v2 {
+  width: 100%;
+  padding: 16px;
+  background: #ff7a59;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.hero-button-v2:hover {
+  background: #ff6347;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 122, 89, 0.4);
+}
+
+/* ===== おすすめエリア ===== */
+.recommended {
+  padding: 60px;
+}
+
+.recommended h2 {
+  font-size: 28px;
+  margin-bottom: 30px;
+  border-bottom: 3px solid #ff5a5f;
+  display: inline-block;
+}
+
+.area-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.area-card {
+  height: 260px;
+  border-radius: 24px;
+  position: relative;
+  color: white;
+  text-decoration: none;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+}
+
+.area-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+}
+
+.area-card span {
+  position: relative;
+  z-index: 1;
+}
+
+.area-jp {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.area-en {
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+.area-card.tokyo {
+  background-image: url("areas/tokyo.jpg");
+}
+
+.area-card.osaka {
+  background-image: url("areas/osaka.jpg");
+}
+
+.area-card.kyoto {
+  background-image: url("areas/kyoto.jpg");
+}
+
+.area-card.sapporo {
+  background-image: url("areas/sapporo.jpg");
+}
+
+/* ===== 検索ページ ===== */
+.search-page {
+  min-height: 100vh;
+  background: #f5f5f5;
+}
+
+.search-form-container {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 40px 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.search-form-advanced {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.search-inputs {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  gap: 16px;
+  align-items: center;
+}
+
+.search-input-wrapper {
+  position: relative;
+  background: white;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.search-icon {
+  font-size: 20px;
+  margin-right: 8px;
+}
+
+.search-input {
+  flex: 1;
+  border: none;
+  padding: 14px 8px;
+  font-size: 16px;
+  outline: none;
+  background: transparent;
+}
+
+.search-input::placeholder {
+  color: #999;
+}
+
+.btn-search {
+  padding: 14px 40px;
+  background: white;
+  color: #667eea;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s;
+  white-space: nowrap;
+}
+
+.btn-search:hover {
+  background: #f8f9fa;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* ===== 検索結果 ===== */
+.search-results-page {
+  padding: 40px 0;
+}
+
+.search-count {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 30px;
+  color: #333;
+}
+
+.rooms-grid-large {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+  gap: 30px;
+}
+
+.room-card-large {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s;
+}
+
+.room-card-large:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.room-card-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.room-image-wrapper {
+  width: 100%;
+  height: 280px;
+  overflow: hidden;
+  background: #e9ecef;
+}
+
+.room-image-large {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+
+.room-card-large:hover .room-image-large {
+  transform: scale(1.05);
+}
+
+.room-image-placeholder-large {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #e9ecef;
+  color: #adb5bd;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.room-info {
+  padding: 20px;
+}
+
+.room-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0 0 8px;
+  color: #212529;
+}
+
+.room-address-small {
+  font-size: 14px;
+  color: #6c757d;
+  margin: 0 0 12px;
+}
+
+.room-rating {
+  margin-bottom: 12px;
+}
+
+.stars {
+  font-size: 14px;
+  letter-spacing: 2px;
+}
+
+.room-description-preview {
+  font-size: 14px;
+  color: #495057;
+  line-height: 1.6;
+  margin: 0 0 16px;
+  min-height: 60px;
+}
+
+.room-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 16px;
+  border-top: 1px solid #e9ecef;
+}
+
+.room-price-large {
+  font-size: 22px;
+  font-weight: bold;
+  color: #ff6b6b;
+}
+
+.btn-detail {
+  padding: 10px 24px;
+  background: #ff7a59;
+  color: white;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+
+.btn-detail:hover {
+  background: #ff6347;
+}
+
+.no-results {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.no-results p {
+  font-size: 18px;
+  color: #666;
+  margin-bottom: 24px;
+}
+
+/* ===== 物件詳細ページ ===== */
+.room-detail-page-v2 {
+  min-height: 100vh;
+  background: #f5f5f5;
+}
+
+.search-bar-top {
+  background: #e9ecef;
+  padding: 20px;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.search-form-top {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.search-inputs-top {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  gap: 12px;
+  align-items: center;
+}
+
+.search-input-wrapper-top {
+  position: relative;
+  background: white;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  border: 1px solid #ced4da;
+}
+
+.search-icon-top {
+  font-size: 18px;
+  margin-right: 8px;
+  color: #6c757d;
+}
+
+.search-input-top {
+  flex: 1;
+  border: none;
+  padding: 12px 8px;
+  font-size: 15px;
+  outline: none;
+  background: transparent;
+}
+
+.search-input-top::placeholder {
+  color: #adb5bd;
+}
+
+.btn-search-top {
+  padding: 12px 32px;
+  background: white;
+  color: #495057;
+  border: 1px solid #ced4da;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.btn-search-top:hover {
+  background: #f8f9fa;
+  border-color: #adb5bd;
+}
+
+.back-button-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 24px 0;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #007bff;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.back-link:hover {
+  color: #0056b3;
+}
+
+.back-arrow {
+  font-size: 20px;
+}
+
+.room-show-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.room-show-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  background: white;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.room-image-section {
+  display: flex;
+  align-items: flex-start;
+}
+
+.room-main-image {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  object-fit: cover;
+  max-height: 600px;
+}
+
+.room-image-placeholder-show {
+  width: 100%;
+  height: 400px;
+  background: #e9ecef;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #adb5bd;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.room-info-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.room-header-simple {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+
+.room-title-simple {
+  font-size: 28px;
+  font-weight: bold;
+  color: #222;
+  margin: 0;
+  flex: 1;
+}
+
+.room-price-display {
+  font-size: 32px;
+  font-weight: bold;
+  color: #ff7a59;
+  white-space: nowrap;
+  margin-left: 20px;
+}
+
+.room-address-simple {
+  font-size: 16px;
+  color: #666;
+  margin: 0 0 16px;
+}
+
+.room-rating-simple {
+  font-size: 18px;
+  letter-spacing: 2px;
+  margin-bottom: 24px;
+}
+
+.room-description-simple {
+  font-size: 15px;
+  line-height: 1.8;
+  color: #444;
+  margin: 0 0 40px;
+  flex: 1;
+}
+
+.booking-form-simple {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.booking-inputs-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.booking-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.booking-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #495057;
+}
+
+.booking-input {
+  padding: 12px;
+  border: 1px solid #ced4da;
+  border-radius: 8px;
+  font-size: 15px;
+  color: #495057;
+  transition: border-color 0.2s;
+}
+
+.booking-input:focus {
+  outline: none;
+  border-color: #80bdff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.guest-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.booking-input.guest-number {
+  padding-right: 40px;
+}
+
+.guest-unit {
+  position: absolute;
+  right: 12px;
+  color: #6c757d;
+  font-size: 15px;
+  pointer-events: none;
+}
+
+.btn-reserve {
+  width: 100%;
+  padding: 16px;
+  background: #ff7a59;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+  display: block;
+  text-align: center;
+}
+
+.btn-reserve:hover {
+  background: #ff6347;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 122, 89, 0.3);
+}
+
+/* ===== 予約確認ページ ===== */
+.reservation-confirm-page {
+  min-height: 100vh;
+  background: #f5f5f5;
+  padding: 60px 20px;
+}
+
+.confirm-container {
+  max-width: 600px;
+  margin: 0 auto;
+  background: white;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.confirm-title {
+  font-size: 28px;
+  font-weight: bold;
+  margin: 0 0 40px;
+  text-align: center;
+  color: #222;
+}
+
+.confirm-details {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.confirm-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 0;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.confirm-row.total {
+  border-bottom: 2px solid #222;
+  margin-top: 16px;
+  padding-top: 24px;
+}
+
+.confirm-label {
+  font-size: 16px;
+  font-weight: 600;
+  color: #495057;
+}
+
+.confirm-value {
+  font-size: 18px;
+  color: #222;
+}
+
+.confirm-value.price {
+  font-size: 24px;
+  font-weight: bold;
+  color: #ff7a59;
+}
+
+.confirm-message {
+  text-align: center;
+  font-size: 15px;
+  color: #666;
+  margin: 32px 0;
+}
+
+.btn-confirm {
+  width: 100%;
+  padding: 16px;
+  background: #ff7a59;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-bottom: 16px;
+}
+
+.btn-confirm:hover {
+  background: #ff6347;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 122, 89, 0.3);
+}
+
+.btn-cancel-reservation {
+  display: block;
+  width: 100%;
+  padding: 16px;
+  background: white;
+  color: #666;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.btn-cancel-reservation:hover {
+  background: #f8f9fa;
+  border-color: #adb5bd;
+}
+
+/* ===== 予約一覧ページ ===== */
+.reservations-page {
+  min-height: 100vh;
+  background: #f5f5f5;
+  padding: 60px 20px;
+}
+
+.reservations-container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.reservations-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.reservation-card {
+  display: flex;
+  gap: 24px;
+  background: white;
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.reservation-image {
+  width: 200px;
+  height: 150px;
+  flex-shrink: 0;
+}
+
+.reservation-thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.reservation-thumb-placeholder {
+  width: 100%;
+  height: 100%;
+  background: #e9ecef;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #adb5bd;
+  font-weight: bold;
+}
+
+.reservation-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.reservation-room-name {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0 0 8px;
+}
+
+.reservation-room-name a {
+  color: #222;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.reservation-room-name a:hover {
+  color: #007bff;
+}
+
+.reservation-address {
+  font-size: 14px;
+  color: #666;
+  margin: 0 0 16px;
+}
+
+.reservation-dates {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.date-item {
+  font-size: 15px;
+  color: #495057;
+}
+
+.date-label {
+  font-weight: 600;
+  margin-right: 8px;
+}
+
+.reservation-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid #e9ecef;
+}
+
+.reservation-price {
+  font-size: 20px;
+  font-weight: bold;
+  color: #222;
+}
+
+.btn-cancel-booking {
+  padding: 10px 24px;
+  background: white;
+  color: #dc3545;
+  border: 1px solid #dc3545;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-cancel-booking:hover {
+  background: #dc3545;
+  color: white;
+}
+
+.no-reservations {
+  text-align: center;
+  padding: 80px 20px;
+  background: white;
+  border-radius: 12px;
+}
+
+.no-reservations p {
+  font-size: 18px;
+  color: #666;
+  margin-bottom: 24px;
+}
+
+/* ===== 施設登録・編集フォーム ===== */
+.form-container {
+  max-width: 1200px;
+  margin: 60px auto;
+  padding: 0 40px;
+}
+
+.form-title {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 50px;
+}
+
+.room-form {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.form-group {
+  display: flex;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+.form-label-wrapper {
+  min-width: 120px;
+  padding-top: 12px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.form-label {
+  font-weight: 600;
+  font-size: 16px;
+  white-space: nowrap;
+}
+
+.required {
+  color: #ff5a5f;
+  font-size: 18px;
+}
+
+.form-input-wide {
+  flex: 1;
+  max-width: 800px;
+  padding: 14px 16px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  transition: border-color 0.2s;
+}
+
+.form-input-wide:focus {
+  outline: none;
+  border-color: #ff5a5f;
+}
+
+.form-textarea-wide {
+  flex: 1;
+  max-width: 800px;
+  padding: 14px 16px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  resize: vertical;
+  font-family: inherit;
+  transition: border-color 0.2s;
+  min-height: 150px;
+}
+
+.form-textarea-wide:focus {
+  outline: none;
+  border-color: #ff5a5f;
+}
+
+.form-file {
+  display: none;
+}
+
+.file-upload-button {
+  display: inline-block;
+  padding: 14px 32px;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.file-upload-button:hover {
+  background: #f5f5f5;
+  border-color: #999;
+}
+
+.form-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 20px;
+  max-width: 1200px;
+}
+
+.btn-submit {
+  width: 100%;
+  padding: 18px;
+  background: #ff7a59;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-submit:hover {
+  background: #ff6347;
+}
+
+.btn-cancel {
+  width: 100%;
+  padding: 18px;
+  background: white;
+  color: #333;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: bold;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: block;
+}
+
+.btn-cancel:hover {
+  background: #f5f5f5;
+  border-color: #999;
+}
+
+.error-messages {
+  background: #ffe6e6;
+  border: 1px solid #ff5a5f;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 30px;
+  max-width: 1200px;
+}
+
+.error-messages h3 {
+  color: #ff5a5f;
+  font-size: 16px;
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.error-messages ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.error-messages li {
+  color: #d32f2f;
+  font-size: 14px;
+  padding: 4px 0;
+}
+
+/* ===== シンプルな設定ページレイアウト ===== */
+.settings-content-simple {
+  max-width: 1200px;
+}
+
+.settings-item-simple {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 40px;
+  padding: 24px 0;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.settings-label-simple {
+  font-weight: 600;
+  color: #222;
+  font-size: 16px;
+}
+
+.settings-value-simple {
+  color: #222;
+  font-size: 16px;
+}
+
+/* ===== シンプルな編集フォーム ===== */
+.settings-form-simple {
+  max-width: 1200px;
+}
+
+.form-field {
+  margin-bottom: 32px;
+}
+
+.field-label {
+  display: block;
+  font-weight: 600;
+  font-size: 16px;
+  color: #222;
+  margin-bottom: 8px;
+}
+
+.field-note {
+  font-size: 13px;
+  color: #666;
+  margin: 4px 0 8px;
+}
+
+.field-input {
+  width: 100%;
+  max-width: 800px;
+  padding: 14px 16px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  transition: border-color 0.2s;
+}
+
+.field-input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+}
+
+.field-input::placeholder {
+  color: #adb5bd;
+}
+
+/* ===== ボタン ===== */
+.form-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+  margin-top: 40px;
+  padding-top: 24px;
+  border-top: 1px solid #e9ecef;
+}
+
+.btn-cancel-simple {
+  padding: 14px 32px;
+  background: white;
+  color: #666;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-cancel-simple:hover {
+  background: #f8f9fa;
+  border-color: #adb5bd;
+}
+
+.btn-save-simple {
+  padding: 14px 32px;
+  background: #ff7a59;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-save-simple:hover {
+  background: #ff6347;
+}
+
+/* ===== レスポンシブ ===== */
+@media (max-width: 768px) {
+  .settings-item-simple {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .form-buttons {
+    flex-direction: column-reverse;
+  }
+
+  .btn-cancel-simple,
+  .btn-save-simple {
+    width: 100%;
+  }
+}
+
+/* ===== 設定ページ ===== */
+.settings-container {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  max-width: 1400px;
+  margin: 0 auto;
+  min-height: calc(100vh - 80px);
+}
+
+/* ===== サイドバー ===== */
+.settings-sidebar {
+  background: #f8f9fa;
+  padding: 40px 24px;
+  border-right: 1px solid #dee2e6;
+}
+
+.settings-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+.settings-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.nav-item {
+  padding: 12px 16px;
+  text-decoration: none;
+  color: #495057;
+  border-radius: 6px;
+  transition: background 0.2s;
+  font-weight: 500;
+}
+
+.nav-item:hover {
+  background: #e9ecef;
+}
+
+.nav-item.active {
+  background: white;
+  color: #ff7a59;
+  font-weight: 600;
+}
+
+/* ===== メインコンテンツ ===== */
+.settings-main {
+  padding: 40px;
+}
+
+.settings-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.settings-page-title {
+  font-size: 32px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.edit-link {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: color 0.2s;
+}
+
+.edit-link:hover {
+  color: #0056b3;
+}
+
+.edit-link::before {
+  content: "✏️";
+  font-size: 18px;
+}
+
+/* ===== シンプルな設定ページレイアウト ===== */
+.settings-content-simple {
+  max-width: 1200px;
+}
+
+.settings-item-simple {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 40px;
+  padding: 24px 0;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.settings-label-simple {
+  font-weight: 600;
+  color: #222;
+  font-size: 16px;
+}
+
+.settings-value-simple {
+  color: #222;
+  font-size: 16px;
+}
+
+/* ===== シンプルな編集フォーム ===== */
+.settings-form-simple {
+  max-width: 1200px;
+}
+
+.form-field {
+  margin-bottom: 32px;
+}
+
+.field-label {
+  display: block;
+  font-weight: 600;
+  font-size: 16px;
+  color: #222;
+  margin-bottom: 8px;
+}
+
+.field-note {
+  font-size: 13px;
+  color: #666;
+  margin: 4px 0 8px;
+}
+
+.field-input {
+  width: 100%;
+  max-width: 800px;
+  padding: 14px 16px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  transition: border-color 0.2s;
+}
+
+.field-input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+}
+
+.field-input::placeholder {
+  color: #adb5bd;
+}
+
+/* ===== ボタン ===== */
+.form-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+  margin-top: 40px;
+  padding-top: 24px;
+  border-top: 1px solid #e9ecef;
+}
+
+.btn-cancel-simple {
+  padding: 14px 32px;
+  background: white;
+  color: #666;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-cancel-simple:hover {
+  background: #f8f9fa;
+  border-color: #adb5bd;
+}
+
+.btn-save-simple {
+  padding: 14px 32px;
+  background: #ff7a59;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-save-simple:hover {
+  background: #ff6347;
+}
+
+/* ===== プロフィール用 ===== */
+.profile-avatar-section {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 40px;
+  padding: 24px 0;
+  border-bottom: 1px solid #e9ecef;
+  align-items: center;
+}
+
+.avatar-label {
+  font-weight: 600;
+  color: #222;
+  font-size: 16px;
+}
+
+.avatar-display {
+  display: flex;
+  align-items: center;
+}
+
+.profile-avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #e9ecef;
+}
+
+.profile-avatar-placeholder {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: #e9ecef;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid #dee2e6;
+}
+
+.avatar-icon {
+  font-size: 48px;
+  color: #adb5bd;
+}
+
+.text-muted {
+  color: #6c757d;
+  font-style: italic;
+}
+
+.avatar-upload-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.avatar-preview {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #e9ecef;
+}
+
+.avatar-preview-placeholder {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: #e9ecef;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid #dee2e6;
+}
+
+.avatar-upload-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background: white;
+  border: 1px solid #ced4da;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.avatar-upload-button:hover {
+  background: #f8f9fa;
+  border-color: #adb5bd;
+}
+
+.form-textarea-horizontal {
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 16px;
+  border: 1px solid #ced4da;
+  border-radius: 6px;
+  resize: vertical;
+  font-family: inherit;
+  transition: border-color 0.2s;
+}
+
+.form-textarea-horizontal:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+/* ===== レスポンシブ ===== */
+@media (max-width: 768px) {
+  .settings-container {
+    grid-template-columns: 1fr;
+  }
+
+  .settings-sidebar {
+    border-right: none;
+    border-bottom: 1px solid #dee2e6;
+  }
+
+  .settings-nav {
+    flex-direction: row;
+    overflow-x: auto;
+  }
+
+  .settings-item-simple,
+  .profile-avatar-section {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .form-buttons {
+    flex-direction: column-reverse;
+  }
+
+  .btn-cancel-simple,
+  .btn-save-simple {
+    width: 100%;
+  }
+}
+
+/* ===== タイトルのみ（編集リンクなし） ===== */
+.settings-page-title-only {
+  font-size: 32px;
+  font-weight: bold;
+  margin: 0 0 40px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #dee2e6;
+}
+
+/* ===== 縦並びフォーム ===== */
+.settings-form-vertical {
+  max-width: 1000px;
+}
+
+.form-row-vertical {
+  margin-bottom: 32px;
+}
+
+.label-with-note {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.row-label {
+  font-weight: 600;
+  font-size: 16px;
+  color: #222;
+}
+
+.label-note {
+  font-size: 13px;
+  color: #666;
+  font-weight: normal;
+}
+
+.row-input {
+  width: 100%;
+  padding: 14px 16px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+
+.row-input:focus {
+  outline: none;
+  border-color: #80bdff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.row-input::placeholder {
+  color: #adb5bd;
+}
+
+/* ===== 右寄せボタン ===== */
+.form-actions-right {
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+  margin-top: 48px;
+  padding-top: 32px;
+}
+
+.btn-cancel-white {
+  padding: 14px 40px;
+  background: white;
+  color: #666;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: inline-block;
+}
+
+.btn-cancel-white:hover {
+  background: #f8f9fa;
+  border-color: #adb5bd;
+}
+
+.btn-save-orange {
+  padding: 14px 40px;
+  background: #ff7a59;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-save-orange:hover {
+  background: #ff6347;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(255, 122, 89, 0.3);
+}
+
+/* ===== レスポンシブ ===== */
+@media (max-width: 768px) {
+  .form-actions-right {
+    flex-direction: column-reverse;
+  }
+
+  .btn-cancel-white,
+  .btn-save-orange {
+    width: 100%;
+  }
+}
+
+/* ===== アバター行 ===== */
+.form-row-avatar {
+  margin-bottom: 40px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.avatar-upload-section {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-top: 16px;
+}
+
+.avatar-preview-large {
+  width: 120px;
+  height: 120px;
+  flex-shrink: 0;
+}
+
+.avatar-img-large {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #e9ecef;
+}
+
+.avatar-placeholder-large {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: #e9ecef;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid #dee2e6;
+}
+
+.avatar-icon-large {
+  font-size: 56px;
+  color: #adb5bd;
+}
+
+.btn-upload-image {
+  display: inline-block;
+  padding: 12px 24px;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.btn-upload-image:hover {
+  background: #f8f9fa;
+  border-color: #adb5bd;
+}
+
+.file-input-hidden {
+  display: none;
+}
+
+/* ===== テキストエリア ===== */
+.row-textarea {
+  width: 100%;
+  padding: 14px 16px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  resize: vertical;
+  font-family: inherit;
+  transition: all 0.2s;
+  min-height: 150px;
+}
+
+.row-textarea:focus {
+  outline: none;
+  border-color: #80bdff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.row-textarea::placeholder {
+  color: #adb5bd;
+}
+
+/* ===== レスポンシブ ===== */
+@media (max-width: 768px) {
+  .avatar-upload-section {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .btn-upload-image {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* ===== Header ===== */
+.site-header {
+  background: linear-gradient(90deg, #1e1e3f, #2b2b5e);
+  padding: 20px 0;
+}
+
+.header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: bold;
+  text-decoration: none;
+  color: white;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.header-link {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.btn-primary {
+  background-color: #ff7a59;
+  color: white;
+  padding: 10px 18px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  border: none;
+}
+
+/* ===== ユーザーメニュー ===== */
+.header-actions details {
+  position: relative;
+}
+
+.header-actions summary {
+  cursor: pointer;
+  list-style: none;
+  color: white;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 12px;
+  border-radius: 50px;
+  transition: background 0.2s;
+}
+
+.header-actions summary:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.header-actions summary::-webkit-details-marker {
+  display: none;
+}
+
+/* ===== ヘッダーアバター ===== */
+.user-avatar-header {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+}
+
+.avatar-img-header {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.avatar-placeholder-header {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.avatar-icon-header {
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.user-name-header {
+  color: white;
+  font-weight: 500;
+  font-size: 15px;
+}
+
+.dropdown-arrow {
+  font-size: 10px;
+  margin-left: 2px;
+  color: white;
+}
+
+/* ===== ドロップダウンメニュー ===== */
+.header-actions details ul {
+  position: absolute;
+  top: 55px;
+  right: 0;
+  list-style: none;
+  padding: 8px 0;
+  margin: 0;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  min-width: 180px;
+  z-index: 100;
+}
+
+.header-actions details ul li {
+  padding: 0;
+}
+
+.header-actions details ul li a,
+.header-actions details ul li form button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 10px 16px;
+  text-decoration: none;
+  color: #333;
+  background: none;
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.header-actions details ul li:hover {
+  background-color: #f5f5f5;
+}
+
+/* ===== レスポンシブ ===== */
+@media (max-width: 768px) {
+  .user-name-header {
+    display: none;
+  }
+  
+  .user-avatar-header {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+/* ===== 登録済み一覧ページ ===== */
+.my-rooms-page {
+  min-height: 100vh;
+  background: white;
+  padding: 40px 0;
+}
+
+.my-rooms-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.page-title-left {
+  font-size: 32px;
+  font-weight: bold;
+  margin: 0 0 40px;
+  text-align: left;
+}
+
+/* ===== テーブルコンテナ ===== */
+.rooms-table-container {
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* ===== クリーンなテーブル ===== */
+.rooms-table-clean {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.rooms-table-clean thead {
+  background: white;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.rooms-table-clean th {
+  padding: 16px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 14px;
+  color: #333;
+}
+
+.rooms-table-clean tbody tr {
+  border-bottom: 1px solid #f0f0f0;
+  transition: background 0.2s;
+}
+
+.rooms-table-clean tbody tr:hover {
+  background: #fafafa;
+}
+
+.rooms-table-clean tbody tr:last-child {
+  border-bottom: none;
+}
+
+.rooms-table-clean td {
+  padding: 20px 16px;
+  vertical-align: middle;
+}
+
+/* ===== 画像セル ===== */
+.td-image {
+  width: 140px;
+}
+
+.room-thumb-clean {
+  width: 120px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.room-thumb-placeholder-clean {
+  width: 120px;
+  height: 80px;
+  background: #f0f0f0;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #999;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* ===== 施設名セル ===== */
+.td-name {
+  font-weight: 500;
+  max-width: 250px;
+}
+
+.room-name-link {
+  color: #007bff;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.room-name-link:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+/* ===== 紹介文セル ===== */
+.td-description {
+  color: #666;
+  font-size: 14px;
+  max-width: 350px;
+}
+
+/* ===== 料金セル ===== */
+.td-price {
+  font-weight: 600;
+  white-space: nowrap;
+  color: #333;
+}
+
+/* ===== 日付セル ===== */
+.td-date {
+  color: #666;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+/* ===== メニューセル ===== */
+.td-menu {
+  width: 60px;
+  text-align: center;
+}
+
+.room-menu-clean {
+  position: relative;
+  display: inline-block;
+}
+
+.menu-trigger-clean {
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: bold;
+  color: #999;
+  list-style: none;
+  padding: 4px 12px;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.menu-trigger-clean::-webkit-details-marker {
+  display: none;
+}
+
+.menu-trigger-clean:hover {
+  background: #f0f0f0;
+  color: #666;
+}
+
+.menu-dropdown-clean {
+  position: absolute;
+  right: 0;
+  top: 100%;
+  margin-top: 4px;
+  list-style: none;
+  padding: 8px 0;
+  margin: 0;
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  min-width: 120px;
+  z-index: 100;
+}
+
+.menu-dropdown-clean li {
+  padding: 0;
+}
+
+.menu-dropdown-clean li a,
+.menu-dropdown-clean li form button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 10px 16px;
+  text-decoration: none;
+  color: #333;
+  background: none;
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.menu-dropdown-clean li:hover {
+  background: #f8f9fa;
+}
+
+.menu-dropdown-clean li form button {
+  color: #dc3545;
+}
+
+/* ===== 空の状態 ===== */
+.no-rooms-message {
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.no-rooms-message p {
+  font-size: 18px;
+  color: #666;
+  margin-bottom: 24px;
+}
+
+/* ===== レスポンシブ ===== */
+@media (max-width: 1024px) {
+  .rooms-table-clean {
+    font-size: 14px;
+  }
+
+  .td-description {
+    max-width: 250px;
+  }
+}
+
+@media (max-width: 768px) {
+  .rooms-table-container {
+    overflow-x: auto;
+  }
+
+  .rooms-table-clean {
+    min-width: 900px;
+  }
+
+  .rooms-table-clean th,
+  .rooms-table-clean td {
+    padding: 12px 8px;
+  }
+
+  .room-thumb-clean {
+    width: 80px;
+    height: 60px;
+  }
+
+  .room-thumb-placeholder-clean {
+    width: 80px;
+    height: 60px;
+  }
+}
+
+/* ===== 予約済み一覧ページ ===== */
+.reservations-page-clean {
+  min-height: 100vh;
+  background: white;
+  padding: 40px 0;
+}
+
+.reservations-container-clean {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ===== テーブルコンテナ ===== */
+.reservations-table-container {
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* ===== 予約テーブル ===== */
+.reservations-table-clean {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.reservations-table-clean thead {
+  background: white;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.reservations-table-clean th {
+  padding: 16px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 14px;
+  color: #333;
+  white-space: nowrap;
+}
+
+.reservations-table-clean tbody tr {
+  border-bottom: 1px solid #f0f0f0;
+  transition: background 0.2s;
+}
+
+.reservations-table-clean tbody tr:hover {
+  background: #fafafa;
+}
+
+.reservations-table-clean tbody tr:last-child {
+  border-bottom: none;
+}
+
+.reservations-table-clean td {
+  padding: 20px 16px;
+  vertical-align: middle;
+}
+
+/* ===== 日時セル ===== */
+.td-datetime {
+  color: #666;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+/* ===== 空の状態 ===== */
+.no-reservations-message {
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.no-reservations-message p {
+  font-size: 18px;
+  color: #666;
+  margin-bottom: 24px;
+}
+
+/* ===== レスポンシブ ===== */
+@media (max-width: 1400px) {
+  .reservations-table-clean {
+    font-size: 13px;
+  }
+
+  .td-description {
+    max-width: 250px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .reservations-table-container {
+    overflow-x: auto;
+  }
+
+  .reservations-table-clean {
+    min-width: 1200px;
+  }
+
+  .reservations-table-clean th,
+  .reservations-table-clean td {
+    padding: 12px 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .room-thumb-clean {
+    width: 80px;
+    height: 60px;
+  }
+
+  .room-thumb-placeholder-clean {
+    width: 80px;
+    height: 60px;
+  }
+
+  .td-description {
+    max-width: 200px;
+  }
+}
+
+/* ===== 削除ボタンのスタイル ===== */
+.menu-dropdown-clean li .delete-button {
+  color: #dc3545;
+}
+
+/* ===== 再予約ページ ===== */
+.room-info-summary {
+  display: flex;
+  gap: 20px;
+  padding: 24px;
+  background: #f8f9fa;
+  border-radius: 12px;
+  margin-bottom: 32px;
+}
+
+.room-summary-image {
+  width: 200px;
+  height: 150px;
+  flex-shrink: 0;
+}
+
+.summary-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.summary-image-placeholder {
+  width: 100%;
+  height: 100%;
+  background: #e9ecef;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #adb5bd;
+  font-weight: bold;
+}
+
+.room-summary-details {
+  flex: 1;
+}
+
+.summary-room-name {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0 0 8px;
+  color: #222;
+}
+
+.summary-room-address {
+  font-size: 15px;
+  color: #666;
+  margin: 0 0 12px;
+}
+
+.summary-room-price {
+  font-size: 20px;
+  font-weight: bold;
+  color: #ff7a59;
+  margin: 0;
+}
+
+/* ===== 再予約フォーム ===== */
+.rebook-form {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.rebook-inputs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.rebook-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.rebook-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #495057;
+}
+
+.rebook-input {
+  padding: 12px;
+  border: 1px solid #ced4da;
+  border-radius: 8px;
+  font-size: 15px;
+  color: #495057;
+  transition: border-color 0.2s;
+}
+
+.rebook-input:focus {
+  outline: none;
+  border-color: #80bdff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.rebook-buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: flex-end;
+  padding-top: 24px;
+  border-top: 1px solid #e9ecef;
+}
+
+/* ===== レスポンシブ ===== */
+@media (max-width: 768px) {
+  .room-info-summary {
+    flex-direction: column;
+  }
+
+  .room-summary-image {
+    width: 100%;
+    height: 200px;
+  }
+
+  .rebook-inputs {
+    grid-template-columns: 1fr;
+  }
+
+  .rebook-buttons {
+    flex-direction: column-reverse;
+  }
+
+  .btn-cancel-reservation,
+  .btn-confirm {
+    width: 100%;
+  }
+}
+
+/* ===== メニューセル ===== */
+.td-menu {
+  width: 60px;
+  text-align: center;
+  position: relative; /* 追加 */
+}
+
+.room-menu-clean {
+  position: relative;
+  display: inline-block;
+}
+
+.menu-trigger-clean {
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: bold;
+  color: #999;
+  list-style: none;
+  padding: 4px 12px;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.menu-trigger-clean::-webkit-details-marker {
+  display: none;
+}
+
+.menu-trigger-clean:hover {
+  background: #f0f0f0;
+  color: #666;
+}
+
+.menu-dropdown-clean {
+  position: absolute;
+  right: 0; /* 右端に配置 */
+  top: 100%;
+  margin-top: 4px;
+  list-style: none;
+  padding: 8px 0;
+  margin: 0;
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  min-width: 140px;
+  z-index: 1000; /* z-indexを高く */
+  white-space: nowrap; /* テキストを折り返さない */
+}
+
+/* テーブルの最後の行のメニューは上に表示 */
+.reservations-table-clean tbody tr:last-child .menu-dropdown-clean,
+.reservations-table-clean tbody tr:nth-last-child(2) .menu-dropdown-clean {
+  top: auto;
+  bottom: 100%;
+  margin-top: 0;
+  margin-bottom: 4px;
+}
+
+.menu-dropdown-clean li {
+  padding: 0;
+}
+
+.menu-dropdown-clean li a,
+.menu-dropdown-clean li form button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 10px 16px;
+  text-decoration: none;
+  color: #333;
+  background: none;
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.menu-dropdown-clean li:hover {
+  background: #f8f9fa;
+}
+
+.menu-dropdown-clean li .delete-button {
+  color: #dc3545;
+}
+
+/* テーブルのオーバーフロー対策 */
+.reservations-table-container {
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: visible; /* visibleに変更 */
+  position: relative;
+}
+
+.reservations-table-clean {
+  width: 100%;
+  border-collapse: collapse;
+  position: relative;
+}
+
+/* ===== 登録済み一覧のメニュー修正 ===== */
+.rooms-table-wrapper {
+  overflow-x: auto;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  position: relative; /* 追加 */
+}
+
+.td-menu {
+  width: 60px;
+  text-align: center;
+  position: relative; /* 追加 */
+}
+
+.room-menu-clean {
+  position: relative;
+  display: inline-block;
+}
+
+.menu-trigger-clean {
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: bold;
+  color: #999;
+  list-style: none;
+  padding: 4px 12px;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.menu-trigger-clean::-webkit-details-marker {
+  display: none;
+}
+
+.menu-trigger-clean:hover {
+  background: #f0f0f0;
+  color: #666;
+}
+
+.menu-dropdown-clean {
+  position: absolute;
+  right: 0;
+  top: 100%;
+  margin-top: 4px;
+  list-style: none;
+  padding: 8px 0;
+  margin: 0;
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  min-width: 140px;
+  z-index: 1000;
+  white-space: nowrap;
+}
+
+/* 最後の行のメニューは上に表示 */
+.rooms-table-clean tbody tr:last-child .menu-dropdown-clean,
+.rooms-table-clean tbody tr:nth-last-child(2) .menu-dropdown-clean {
+  top: auto;
+  bottom: 100%;
+  margin-top: 0;
+  margin-bottom: 4px;
+}
+
+.menu-dropdown-clean li {
+  padding: 0;
+}
+
+.menu-dropdown-clean li a,
+.menu-dropdown-clean li form button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 10px 16px;
+  text-decoration: none;
+  color: #333;
+  background: none;
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.menu-dropdown-clean li:hover {
+  background: #f8f9fa;
+}
+
+.menu-dropdown-clean li form button {
+  color: #dc3545;
+}
+
+/* テーブルコンテナのオーバーフロー */
+.rooms-table-container {
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: visible; /* visibleに変更 */
+  position: relative;
+}
+
+.my-rooms-container .rooms-table-wrapper {
+  overflow: visible; /* visibleに変更 */
+}
+
+/* 料金注釈 */
+.price-note {
+  font-size: 13px;
+  color: #666;
+  margin: -30px 0 30px;
+  font-style: italic;
+}

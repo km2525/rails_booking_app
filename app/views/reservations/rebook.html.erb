@@ -1,0 +1,54 @@
+<div class="reservation-confirm-page">
+  <div class="confirm-container">
+    <h1 class="confirm-title">再予約</h1>
+
+    <div class="room-info-summary">
+      <div class="room-summary-image">
+        <% if @room.image.attached? %>
+          <%= image_tag @room.image, class: "summary-image" %>
+        <% else %>
+          <div class="summary-image-placeholder">No Image</div>
+        <% end %>
+      </div>
+      <div class="room-summary-details">
+        <h2 class="summary-room-name"><%= @room.name %></h2>
+        <p class="summary-room-address"><%= @room.address %></p>
+        <p class="summary-room-price">¥<%= number_with_delimiter(@room.price) %> / 泊</p>
+      </div>
+    </div>
+
+    <%= form_with url: confirm_room_reservations_path(@room), method: :get, local: true, class: "rebook-form" do |f| %>
+      <div class="rebook-inputs">
+        <div class="rebook-input-group">
+          <%= label_tag :check_in, "チェックイン", class: "rebook-label" %>
+          <%= date_field_tag :check_in, @reservation.check_in,
+                class: "rebook-input",
+                min: Date.today,
+                required: true %>
+        </div>
+
+        <div class="rebook-input-group">
+          <%= label_tag :check_out, "チェックアウト", class: "rebook-label" %>
+          <%= date_field_tag :check_out, @reservation.check_out,
+                class: "rebook-input",
+                min: Date.today + 1,
+                required: true %>
+        </div>
+
+        <div class="rebook-input-group">
+          <%= label_tag :guests, "人数", class: "rebook-label" %>
+          <%= number_field_tag :guests, @reservation.guests,
+                class: "rebook-input",
+                min: 1,
+                max: 10,
+                required: true %>
+        </div>
+      </div>
+
+      <div class="rebook-buttons">
+        <%= link_to "キャンセル", reservations_path, class: "btn-cancel-reservation" %>
+        <%= submit_tag "予約内容を確認", class: "btn-confirm" %>
+      </div>
+    <% end %>
+  </div>
+</div>

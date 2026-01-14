@@ -1,0 +1,84 @@
+<div class="settings-container">
+  <aside class="settings-sidebar">
+    <h2 class="settings-title">設定</h2>
+    <nav class="settings-nav">
+      <%= link_to "アカウント", account_settings_path, class: "nav-item" %>
+      <%= link_to "プロフィール", profile_settings_path, class: "nav-item active" %>
+    </nav>
+  </aside>
+
+  <main class="settings-main">
+    <h1 class="settings-page-title-only">プロフィール</h1>
+
+    <!-- 編集フォーム（常に表示） -->
+    <div class="settings-form-vertical">
+      <%= form_with model: @user, url: profile_settings_path, method: :patch, local: true do |f| %>
+        <% if @user.errors.any? %>
+          <div class="error-messages">
+            <h3><%= @user.errors.count %>件のエラーがあります</h3>
+            <ul>
+              <% @user.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        <!-- アイコン画像 -->
+        <div class="form-row-avatar">
+          <div class="row-label">アイコン画像</div>
+          <div class="avatar-upload-section">
+            <div class="avatar-preview-large">
+              <% if @user.avatar.attached? %>
+                <%= image_tag @user.avatar, class: "avatar-img-large", id: "avatar-preview-img" %>
+              <% else %>
+                <div class="avatar-placeholder-large" id="avatar-preview-img">
+                  <span class="avatar-icon-large">⭐</span>
+                </div>
+              <% end %>
+            </div>
+            <label class="btn-upload-image">
+              画像アップロード
+              <%= f.file_field :avatar, 
+                    class: "file-input-hidden",
+                    accept: "image/*",
+                    onchange: "previewAvatar(event)" %>
+            </label>
+          </div>
+        </div>
+
+        <!-- 名前 -->
+        <div class="form-row-vertical">
+          <%= f.label :name, "名前", class: "row-label" %>
+          <%= f.text_field :name, class: "row-input", placeholder: "名前を入力" %>
+        </div>
+
+        <!-- 自己紹介 -->
+        <div class="form-row-vertical">
+          <%= f.label :bio, "自己紹介", class: "row-label" %>
+          <%= f.text_area :bio, class: "row-textarea", placeholder: "自己紹介を入力", rows: 6 %>
+        </div>
+
+        <div class="form-actions-right">
+          <%= link_to "キャンセル", profile_settings_path, class: "btn-cancel-white" %>
+          <%= f.submit "保存", class: "btn-save-orange" %>
+        </div>
+      <% end %>
+    </div>
+  </main>
+</div>
+
+<script>
+  function previewAvatar(event) {
+    const file = event.target.files[0];
+    const preview = document.getElementById('avatar-preview-img');
+    
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        preview.innerHTML = '<img src="' + e.target.result + '" class="avatar-img-large" />';
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+</script>

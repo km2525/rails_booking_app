@@ -1,0 +1,76 @@
+<div class="reservations-page-clean">
+  <div class="reservations-container-clean">
+    <h1 class="page-title-left">予約済み一覧</h1>
+
+    <% if @reservations.any? %>
+      <div class="reservations-table-container">
+        <table class="reservations-table-clean">
+          <thead>
+            <tr>
+              <th>画像</th>
+              <th>施設名</th>
+              <th>紹介文</th>
+              <th>合計料金</th>
+              <th>チェックイン</th>
+              <th>チェックアウト</th>
+              <th>予約確定日時</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @reservations.each do |reservation| %>
+              <tr>
+                <td class="td-image">
+                  <% if reservation.room.image.attached? %>
+                    <%= image_tag reservation.room.image, class: "room-thumb-clean" %>
+                  <% else %>
+                    <div class="room-thumb-placeholder-clean">No Image</div>
+                  <% end %>
+                </td>
+                <td class="td-name">
+                  <%= link_to reservation.room.name, room_path(reservation.room), class: "room-name-link" %>
+                </td>
+                <td class="td-description">
+                  <%= truncate(reservation.room.description, length: 80) %>
+                </td>
+                <td class="td-price">
+                  ¥<%= number_with_delimiter(reservation.total_price) %>
+                </td>
+                <td class="td-date">
+                  <%= reservation.check_in.strftime("%Y/%m/%d") %>
+                </td>
+                <td class="td-date">
+                  <%= reservation.check_out.strftime("%Y/%m/%d") %>
+                </td>
+                <td class="td-datetime">
+                  <%= reservation.created_at.strftime("%Y/%m/%d") %>
+                </td>
+                <td class="td-menu">
+                  <details class="room-menu-clean">
+                    <summary class="menu-trigger-clean">⋮</summary>
+                    <ul class="menu-dropdown-clean">
+                      <li>
+                        <%= link_to "再予約", rebook_reservation_path(reservation) %>
+                      </li>
+                      <li>
+                        <%= button_to "予約を削除", reservation_path(reservation), 
+                              method: :delete, 
+                              data: { confirm: "予約をキャンセルしますか？" },
+                              class: "delete-button" %>
+                      </li>
+                    </ul>
+                  </details>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    <% else %>
+      <div class="no-reservations-message">
+        <p>予約はまだありません</p>
+        <%= link_to "物件を探す", rooms_path, class: "btn-primary" %>
+      </div>
+    <% end %>
+  </div>
+</div>

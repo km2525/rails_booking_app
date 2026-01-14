@@ -1,0 +1,65 @@
+<div class="my-rooms-page">
+  <div class="my-rooms-container">
+    <h1 class="page-title-left">登録済み一覧</h1>
+
+    <% if @rooms.any? %>
+      <div class="rooms-table-container">
+        <table class="rooms-table-clean">
+          <thead>
+            <tr>
+              <th>画像</th>
+              <th>施設名</th>
+              <th>紹介文</th>
+              <th>料金</th>
+              <th>作成日</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @rooms.each do |room| %>
+              <tr>
+                <td class="td-image">
+                  <% if room.image.attached? %>
+                    <%= image_tag room.image, class: "room-thumb-clean" %>
+                  <% else %>
+                    <div class="room-thumb-placeholder-clean">No Image</div>
+                  <% end %>
+                </td>
+                <td class="td-name">
+                  <%= link_to room.name, room_path(room), class: "room-name-link" %>
+                </td>
+                <td class="td-description">
+                  <%= truncate(room.description, length: 50) %>
+                </td>
+                <td class="td-price">
+                  ¥<%= number_with_delimiter(room.price) %>~
+                </td>
+                <td class="td-date">
+                  <%= room.created_at.strftime("%Y/%m/%d") %>
+                </td>
+                <td class="td-menu">
+                  <details class="room-menu-clean">
+                    <summary class="menu-trigger-clean">⋮</summary>
+                    <ul class="menu-dropdown-clean">
+                      <li><%= link_to "編集", edit_room_path(room) %></li>
+                      <li>
+                        <%= button_to "削除", room_path(room), 
+                              method: :delete, 
+                              data: { confirm: "本当に削除しますか？" } %>
+                      </li>
+                    </ul>
+                  </details>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    <% else %>
+      <div class="no-rooms-message">
+        <p>まだ施設を登録していません</p>
+        <%= link_to "施設を登録する", new_room_path, class: "btn-primary" %>
+      </div>
+    <% end %>
+  </div>
+</div>
